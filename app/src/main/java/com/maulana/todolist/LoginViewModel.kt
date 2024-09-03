@@ -24,6 +24,7 @@ class LoginViewModel @Inject constructor(
 
     val userName = mutableStateOf("")
     val password = mutableStateOf("")
+    val errorMessage = mutableStateOf("")
 
     fun login() {
         viewModelScope.launch(dispatcher) {
@@ -37,6 +38,7 @@ class LoginViewModel @Inject constructor(
                     loginSuccess.value = true
                 }
             }.onFailure {
+                errorMessage.value = it.message.orEmpty()
                 loginLoading.value = false
                 loginSuccess.value = false
             }
