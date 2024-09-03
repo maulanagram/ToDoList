@@ -6,25 +6,26 @@ import com.maulana.remote.service.LoginService
 import com.maulana.repository.AuthRepository
 import dagger.Module
 import dagger.Provides
-import javax.inject.Singleton
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-class AuthDataModule {
+@InstallIn(ViewModelComponent::class)
+object AuthDataModule {
 
-    @Singleton
     @Provides
-    fun provideRepository(
-        @Singleton authRemoteDataSource: LoginRemoteDataSource
+    fun provideAuthRepository(
+        authRemoteDataSource: LoginRemoteDataSource
     ): AuthRepository {
         return AuthRepositoryImpl(
             authRemoteDataSource
         )
     }
 
-    @Singleton
+
     @Provides
     fun provideRemoteDataSource(
-        @Singleton loginService: LoginService,
+        loginService: LoginService,
     ): LoginRemoteDataSource {
         return LoginRemoteDataSource(loginService)
     }

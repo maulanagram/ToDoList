@@ -1,5 +1,6 @@
 package com.maulana.todolist
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,19 +14,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.maulana.todolist.databinding.FragmentSecondBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
+@AndroidEntryPoint
 class SecondFragment : Fragment() {
+    @Inject
+    lateinit var preferences: SharedPreferences
 
     private var _binding: FragmentSecondBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,22 +58,33 @@ class SecondFragment : Fragment() {
 
     @Composable
     fun LoginComponent() {
-        Column {
-            Text("Username")
-            TextField(value = "", onValueChange = {})
-            Text("Password")
-            TextField(value = "", onValueChange = {})
-            Button(onClick = {
+        loginViewModel.apply {
+            Column {
+
+                Text("Username")
+                TextField(value = userName.value, onValueChange = {
+                    userName.value = it
+                })
+                Text("Password")
+                TextField(value = password.value, onValueChange = {
+                    password.value = it
+                })
+                Button(onClick = {
+                    login()
+                }) {
+                    Text(text = "Login")
+                }
+            }
+
+            if (loginSuccess.value) {
                 findNavController().navigateUp()
-            }) {
-                Text(text = "Login")
             }
         }
     }
 
     @Preview
     @Composable
-    fun Preview(){
+    fun Preview() {
         LoginComponent()
     }
 
