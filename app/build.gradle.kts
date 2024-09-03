@@ -51,7 +51,7 @@ android {
 }
 
 dependencies {
-    kapt("groupId:artifactId:version")
+    //kapt("groupId:artifactId:version")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -70,7 +70,7 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.okhttp)
     implementation(libs.dagger)
-    kapt(libs.dagger.compiler)
+    implementation(libs.gson.converter.retrofit)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
