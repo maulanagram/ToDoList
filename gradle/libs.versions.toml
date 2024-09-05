@@ -1,27 +1,32 @@
 [versions]
-agp = "8.5.2"
+agp = "8.6.0"
+constraintlayoutCompose = "1.0.1"
 hiltAndroid = "2.52"
+hiltNavigationCompose = "1.2.0"
 kotlin = "1.9.10"
-coreKtx = "1.10.1"
+coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
+junitVersion = "1.2.1"
 espressoCore = "3.5.1"
-appcompat = "1.6.1"
-material = "1.10.0"
+appcompat = "1.7.0"
+material = "1.12.0"
 constraintlayout = "2.1.4"
-navigationFragmentKtx = "2.7.7"
-navigationUiKtx = "2.7.7"
-runtimeAndroid = "1.6.8"
-lifecycleRuntimeKtx = "2.6.1"
-activityCompose = "1.9.1"
-composeBom = "2024.08.00"
+navigationFragmentKtx = "2.8.0"
+navigationUiKtx = "2.8.0"
+runtimeAndroid = "1.7.0"
+lifecycleRuntimeKtx = "2.8.5"
+activityCompose = "1.9.2"
+composeBom = "2024.09.00"
 gson = "2.10.1"
 okhttp = "4.12.0"
 retrofit = "2.9.0"
-dagger = "2.45"
+dagger = "2.52"
+navigationCompose = "2.8.0"
 
 [libraries]
+androidx-constraintlayout-compose = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "constraintlayoutCompose" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroid" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -49,6 +54,7 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp"}
 dagger = { group = "com.google.dagger", name = "dagger", version.ref = "dagger"}
 dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "dagger"}
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 
 
 

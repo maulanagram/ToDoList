@@ -33,11 +33,4 @@ object RestModule {
             .build()
     }
 
-    @Provides
-    fun provideLoginService(
-        retrofit: Retrofit,
-    ): LoginService {
-        return retrofit.create(LoginService::class.java)
-    }
-
 }
